@@ -1,0 +1,49 @@
+services:
+  # https://github.com/floci-io/floci/blob/main/docker-compose.yml
+  floci:
+    # https://hub.docker.com/r/floci/floci
+    image: floci/floci:1.5.22
+    user: root
+    ports:
+      - "4566:4566"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - floci_data:/app/data
+    environment:
+      FLOCI_SERVICES_DOCKER_NETWORK: floci_default
+    networks:
+      floci_default:
+        # aliases:
+        #   - localhost.floci.io
+    restart: unless-stopped
+
+  stackport:
+    # https://hub.docker.com/r/davireis/stackport
+    image: davireis/stackport:0.3.4
+    ports:
+      - "8080:8080"
+    environment:
+      - AWS_ENDPOINT_URL=http://floci:4566
+      - AWS_REGION=ap-northeast-1
+      - AWS_ACCESS_KEY_ID=DUMMY
+      - AWS_SECRET_ACCESS_KEY=DUMMY
+    # Uncomment to use AWS profiles/SSO from the container:
+    # volumes:
+    #   - ~/.aws:/root/.aws
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health')" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+    depends_on:
+      - floci
+    networks:
+      floci_default:
+
+volumes:
+  floci_data:
+
+networks:
+  floci_default:
+    name: floci_default

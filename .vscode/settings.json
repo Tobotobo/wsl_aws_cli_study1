@@ -1,0 +1,11 @@
+{
+    "files.eol": "\n",
+    "[bat]": {
+        "files.encoding": "shiftjis",
+        "files.eol": "\r\n",
+    },
+    "[powershell]": {
+        "files.encoding": "shiftjis",
+        "files.eol": "\r\n",
+    }
+}
