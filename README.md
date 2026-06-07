@@ -26,9 +26,9 @@ flowchart LR
 ## 参照
 
 floci  
+https://floci.io/floci/  
 https://github.com/floci-io/floci  
-ポップコーンそっくりの雲の形をした雲、フロッカスにちなんで名付けられた。
-無料のオープンソースのローカルAWSエミュレーター。アカウント不要。機能制限なし。ただ docker compose up。
+Flociは、開発環境やCI環境で信頼性の高いAWSサービスを、コスト、複雑さ、ベンダーロックインなしに必要とする開発者向けに構築された、高速で無料のオープンソースのローカルAWSサービスエミュレーターです。
 
 StackPort  
 https://github.com/DaviReisVieira/stackport  
@@ -110,7 +110,3 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 http://localhost:8080
 
 ![alt text](docs/images/1780632516228.png)
-
-### AWS CLI で S3 バケットを操作
-
-[docs/S3.md](docs/S3.md)

@@ -26,7 +26,7 @@ aws s3 cp s3://sample-s3/sample.txt ./sample2.txt
 
 ## StackPort による GUI での確認
 
-![alt text](images/1780631210331.png)
+![alt text](../../docs/images/1780631210331.png)
 
 
 ## ファイル削除

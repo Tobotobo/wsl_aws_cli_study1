@@ -11,6 +11,11 @@ services:
       - floci_data:/app/data
     environment:
       FLOCI_SERVICES_DOCKER_NETWORK: floci_default
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:4566/_floci/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     networks:
       floci_default:
         # aliases:
@@ -32,14 +37,15 @@ services:
     #   - ~/.aws:/root/.aws
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health')" ]
-      interval: 10s
+      interval: 5s
       timeout: 3s
-      retries: 3
-    restart: unless-stopped
+      retries: 10
     depends_on:
-      - floci
+      floci:
+        condition: service_healthy
     networks:
       floci_default:
+    restart: unless-stopped
 
 volumes:
   floci_data:
