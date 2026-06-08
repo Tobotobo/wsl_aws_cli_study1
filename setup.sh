@@ -95,7 +95,7 @@ echo "AWS CLI をインストール中..."
   rm -rf ./awscliv2.zip ./aws
 )
 
-echo "ユーザー dev の .bashrc に AWS モックへの接続情報を追加中..."
+echo "ユーザー dev の .bashrc に AWS エミュレーターへの接続情報を追加中..."
 cat << 'EOF' >> /home/dev/.bashrc
 
 # AWS LocalSettings (floci etc.)
@@ -103,6 +103,9 @@ export AWS_ENDPOINT_URL=http://localhost:4566
 export AWS_DEFAULT_REGION=ap-northeast-1
 export AWS_ACCESS_KEY_ID=DUMMY
 export AWS_SECRET_ACCESS_KEY=DUMMY
+
+# AWS CLI ページャーを無効化
+export AWS_PAGER=""
 EOF
 
 echo "設定完了"

@@ -2,7 +2,7 @@ services:
   # https://github.com/floci-io/floci/blob/main/docker-compose.yml
   floci:
     # https://hub.docker.com/r/floci/floci
-    image: floci/floci:1.5.22
+    image: floci/floci:1.5.23
     user: root
     ports:
       - "4566:4566"

@@ -93,6 +93,12 @@ aws lambda update-function-code \
 
 ## .NET 10 の場合
 
+publish.zip のソース  
+https://github.com/Tobotobo/aws_lambda_dotnet_blazor_study1    
+
+
+※事前に「IAM ロールを作成」と「ロール ARN を取得」を実行する
+
 ```
 (
 cd ./samples/Lambda
@@ -121,7 +127,11 @@ aws lambda get-function-url-config \
   --output text
 ```
 
-更新
+URL にアクセス
+
+![alt text](../../docs/images/1780884450205.png)
+
+ソース更新
 ```bash
 (
 cd ./samples/Lambda
